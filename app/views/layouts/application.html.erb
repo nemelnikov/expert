@@ -7,8 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
+    <header>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><%= link_to "Home",    'index'  %></li>
+		            <li><%= link_to "Help",    'help'   %></li>
+		            <li><%= link_to "Genres",  'genres' %></li> 
+				</ul>
+				
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</header>
+    
+    <section id="main">
+		<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<%= yield %>
+		</div>
+		<div class="col-md-2"></div>
+		</div>
+	</section> 
 
-<%= yield %>
-
-</body>
+ </div>
+ </body>
 </html>
+
