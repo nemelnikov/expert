@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'index' => 'static_pages#index', as: 'index'
   get 'help' => 'static_pages#help', as: 'help'
   get 'genres' => 'static_pages#genres', as: 'genres'
