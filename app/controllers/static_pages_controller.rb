@@ -7,4 +7,9 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+
+  def userInfo
+  	authenticate_user!
+  	@user = current_user
+  end
 end
