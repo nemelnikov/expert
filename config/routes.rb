@@ -7,7 +7,8 @@ Rails.application.routes.draw do
    as :user do
     get 'signin' => 'devise/sessions#new', :as => :new_user_session
     post 'signin' => 'devise/sessions#create', :as => :user_session
-    delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    match 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session,
+      :via => Devise.mappings[:user].sign_out_via
    end
   
   get 'index' => 'static_pages#index', as: 'index'

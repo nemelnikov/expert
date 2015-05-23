@@ -11,6 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def userInfo
-  	redirect_to profile_user_url(current_user.id)
+  	redirect_to profile_user_url(ProfileUser.find_by_user_id(current_user.id))
   end
 end

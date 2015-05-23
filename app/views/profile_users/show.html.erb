@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile_user.user_id %>
-</p>
+
 
 <p>
   <strong>First name:</strong>
@@ -21,7 +18,7 @@
 </p>
 
 
-<%= link_to 'Edit', edit_profile_user_url(@profile_user.user_id) %> |
+<%= link_to 'Edit', edit_profile_user_url(@profile_user) %> 
 <%#= link_to 'Back', profile_users_path %>
 <%= button_to 'Sign out', destroy_user_session_path, method: :delete,
   data: { confirm: 'Are you sure?' }%>
