@@ -1,8 +1,11 @@
 class ProfileUsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_profile_user, only: [:show, :edit, :update, :destroy]
+
 
   # GET /profile_users
   # GET /profile_users.json
+  # Vishal - Disabled using routes
   def index
     @profile_users = ProfileUser.all
   end
@@ -12,6 +15,7 @@ class ProfileUsersController < ApplicationController
   def show
   end
 
+  # Vishal - Disabled using routes
   # GET /profile_users/new
   def new
     @profile_user = ProfileUser.new
@@ -21,6 +25,7 @@ class ProfileUsersController < ApplicationController
   def edit
   end
 
+  # Vishal - Disabled using routes
   # POST /profile_users
   # POST /profile_users.json
   def create
@@ -51,6 +56,7 @@ class ProfileUsersController < ApplicationController
     end
   end
 
+  # Vishal - Disabled using routes
   # DELETE /profile_users/1
   # DELETE /profile_users/1.json
   def destroy
@@ -64,7 +70,7 @@ class ProfileUsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile_user
-      @profile_user = ProfileUser.find(params[:id])
+      @profile_user = ProfileUser.find_by_user_id(current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

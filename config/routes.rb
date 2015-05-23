@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :profile_users
+  resources :profile_users, only: [:show,:edit,:update] 
 
 
   #Added appropriates routing schemea
