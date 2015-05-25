@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :profile_users, only: [:show,:edit,:update] 
+
+
+  #Added appropriates routing schemea
+   devise_for :users, :skip => [:sessions]#Skipping existing session routing
+   as :user do
+    get 'signin' => 'devise/sessions#new', :as => :new_user_session
+    post 'signin' => 'devise/sessions#create', :as => :user_session
+    match 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session,
+      :via => Devise.mappings[:user].sign_out_via
+   end
   
   get 'index' => 'static_pages#index', as: 'index'
   get 'help' => 'static_pages#help', as: 'help'

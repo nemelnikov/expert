@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Profile Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Skype</th>
+      <th>Admin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profile_users.each do |profile_user| %>
+      <tr>
+        <td><%= profile_user.user %></td>
+        <td><%= profile_user.first_name %></td>
+        <td><%= profile_user.last_name %></td>
+        <td><%= profile_user.skype %></td>
+        <td><%= profile_user.admin %></td>
+        <td><%= link_to 'Show', profile_user %></td>
+        <td><%= link_to 'Edit', edit_profile_user_path(profile_user) %></td>
+        <td><%= link_to 'Destroy', profile_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile user', new_profile_user_path %>

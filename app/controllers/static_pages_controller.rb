@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :authenticate_user!, only: [:userInfo]
+
   def home
   end
   
@@ -9,7 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def userInfo
-  	authenticate_user!
-  	@user = current_user
+  	redirect_to profile_user_url(ProfileUser.find_by_user_id(current_user.id))
   end
 end
