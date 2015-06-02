@@ -18,7 +18,7 @@ class ProfileExpertsControllerTest < ActionController::TestCase
 
   test "should create profile_expert" do
     assert_difference('ProfileExpert.count') do
-      post :create, profile_expert: { about: @profile_expert.about, first_name: @profile_expert.first_name, free_question: @profile_expert.free_question, last_name: @profile_expert.last_name, skype: @profile_expert.skype }
+      post :create, profile_expert: { about: @profile_expert.about, ask_expert_id: @profile_expert.ask_expert_id, first_name: @profile_expert.first_name, free_questions: @profile_expert.free_questions, last_name: @profile_expert.last_name, skype: @profile_expert.skype }
     end
 
     assert_redirected_to profile_expert_path(assigns(:profile_expert))
@@ -35,7 +35,7 @@ class ProfileExpertsControllerTest < ActionController::TestCase
   end
 
   test "should update profile_expert" do
-    patch :update, id: @profile_expert, profile_expert: { about: @profile_expert.about, first_name: @profile_expert.first_name, free_question: @profile_expert.free_question, last_name: @profile_expert.last_name, skype: @profile_expert.skype }
+    patch :update, id: @profile_expert, profile_expert: { about: @profile_expert.about, ask_expert_id: @profile_expert.ask_expert_id, first_name: @profile_expert.first_name, free_questions: @profile_expert.free_questions, last_name: @profile_expert.last_name, skype: @profile_expert.skype }
     assert_redirected_to profile_expert_path(assigns(:profile_expert))
   end
 

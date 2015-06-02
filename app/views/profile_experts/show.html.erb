@@ -21,8 +21,13 @@
 </p>
 
 <p>
-  <strong>Free question:</strong>
-  <%= @profile_expert.free_question %>
+  <strong>Free questions:</strong>
+  <%= @profile_expert.free_questions %>
+</p>
+
+<p>
+  <strong>Ask expert:</strong>
+  <%= @profile_expert.ask_expert %>
 </p>
 
 <%= link_to 'Edit', edit_profile_expert_path(@profile_expert) %> |

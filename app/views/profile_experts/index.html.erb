@@ -9,7 +9,8 @@
       <th>Last name</th>
       <th>Skype</th>
       <th>About</th>
-      <th>Free question</th>
+      <th>Free questions</th>
+      <th>Ask expert</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +22,8 @@
         <td><%= profile_expert.last_name %></td>
         <td><%= profile_expert.skype %></td>
         <td><%= profile_expert.about %></td>
-        <td><%= profile_expert.free_question %></td>
+        <td><%= profile_expert.free_questions %></td>
+        <td><%= profile_expert.ask_expert %></td>
         <td><%= link_to 'Show', profile_expert %></td>
         <td><%= link_to 'Edit', edit_profile_expert_path(profile_expert) %></td>
         <td><%= link_to 'Destroy', profile_expert, method: :delete, data: { confirm: 'Are you sure?' } %></td>

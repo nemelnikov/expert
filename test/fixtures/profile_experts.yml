@@ -5,11 +5,13 @@ one:
   last_name: MyString
   skype: MyString
   about: MyText
-  free_question: 1
+  free_questions: 1
+  ask_expert_id: 
 
 two:
   first_name: MyString
   last_name: MyString
   skype: MyString
   about: MyText
-  free_question: 1
+  free_questions: 1
+  ask_expert_id: 

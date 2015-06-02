@@ -69,6 +69,6 @@ class ProfileExpertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_expert_params
-      params.require(:profile_expert).permit(:first_name, :last_name, :skype, :about, :free_question)
+      params.require(:profile_expert).permit(:first_name, :last_name, :skype, :about, :free_questions, :ask_expert_id)
     end
 end
