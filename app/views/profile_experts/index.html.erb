@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Profile Experts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Skype</th>
+      <th>About</th>
+      <th>Free question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profile_experts.each do |profile_expert| %>
+      <tr>
+        <td><%= profile_expert.first_name %></td>
+        <td><%= profile_expert.last_name %></td>
+        <td><%= profile_expert.skype %></td>
+        <td><%= profile_expert.about %></td>
+        <td><%= profile_expert.free_question %></td>
+        <td><%= link_to 'Show', profile_expert %></td>
+        <td><%= link_to 'Edit', edit_profile_expert_path(profile_expert) %></td>
+        <td><%= link_to 'Destroy', profile_expert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile expert', new_profile_expert_path %>

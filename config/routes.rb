@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :profile_experts
+
   devise_for :ask_experts
   resources :profile_users, only: [:show,:edit,:update] 
 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @profile_expert.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @profile_expert.last_name %>
+</p>
+
+<p>
+  <strong>Skype:</strong>
+  <%= @profile_expert.skype %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @profile_expert.about %>
+</p>
+
+<p>
+  <strong>Free question:</strong>
+  <%= @profile_expert.free_question %>
+</p>
+
+<%= link_to 'Edit', edit_profile_expert_path(@profile_expert) %> |
+<%= link_to 'Back', profile_experts_path %>
