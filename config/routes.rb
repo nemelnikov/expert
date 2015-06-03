@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :profile_experts
+
+  devise_for :ask_experts
+  
   resources :profile_users, only: [:show,:edit,:update] 
 
 
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   get 'index' => 'static_pages#index', as: 'index'
   get 'help' => 'static_pages#help', as: 'help'
   get 'genres' => 'static_pages#genres', as: 'genres'
-  get 'userInfo' => 'static_pages#userInfo', as: 'userInfo'
+  #get 'userInfo' => 'static_pages#userInfo', as: 'userInfo'
   root 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
