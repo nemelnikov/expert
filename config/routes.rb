@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :profile_experts
+  resources :profile_experts, only: [:show,:edit,:update] #Restriciting automatic creation,since this should
+                                                      #only be created if a expert is signed_up      
 
   devise_for :ask_experts
   
-  resources :profile_users, only: [:show,:edit,:update] 
+  resources :profile_users, only: [:show,:edit,:update]#Similar to above but with user sign_up 
 
 
   #Added appropriates routing schemea

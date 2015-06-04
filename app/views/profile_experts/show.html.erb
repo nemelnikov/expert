@@ -25,10 +25,8 @@
   <%= @profile_expert.free_questions %>
 </p>
 
-<p>
-  <strong>Ask expert:</strong>
-  <%= @profile_expert.ask_expert %>
-</p>
 
 <%= link_to 'Edit', edit_profile_expert_path(@profile_expert) %> |
-<%= link_to 'Back', profile_experts_path %>
+<%#= link_to 'Back', profile_experts_path %>
+<%= button_to 'Sign out', destroy_ask_expert_session_path, method: :delete,
+  data: { confirm: 'Are you sure?' }%>

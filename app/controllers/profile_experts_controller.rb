@@ -1,4 +1,5 @@
 class ProfileExpertsController < ApplicationController
+  before_action :authenticate_ask_expert!
   before_action :set_profile_expert, only: [:show, :edit, :update, :destroy]
 
   # GET /profile_experts
