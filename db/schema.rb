@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602105209) do
+ActiveRecord::Schema.define(version: 20150605085754) do
 
   create_table "ask_experts", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20150602105209) do
 
   add_index "ask_experts", ["email"], name: "index_ask_experts_on_email", unique: true, using: :btree
   add_index "ask_experts", ["reset_password_token"], name: "index_ask_experts_on_reset_password_token", unique: true, using: :btree
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "profile_experts", force: :cascade do |t|
     t.string   "first_name",     limit: 255
