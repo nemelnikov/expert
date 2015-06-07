@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  before_action :set_genre, only: [:show, :edit, :update, :destroy]
+  before_action :set_genre, only: [:show, :edit, :update, :destroy, :find_experts_by_genre]
 
   # GET /genres
   # GET /genres.json
@@ -60,6 +60,11 @@ class GenresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def find_experts_by_genre
+    @experts_by_genre=ProfileExpert.find(@genre.profile_expert_ids)
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

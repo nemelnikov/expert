@@ -16,7 +16,7 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.description %></td>
-        <td><%= link_to 'Show experts', genre  %></td>
+        <td><%= link_to 'Show experts', experts_by_genre_path(genre)  %></td>
         <td><%= link_to 'Show', genre %></td>
         <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
         <td><%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :genres
+  get 'genres/experts/:id' => 'genres#find_experts_by_genre', as: 'experts_by_genre'
 
   resources :profile_experts, only: [:show,:edit,:update] #Restriciting automatic creation,since this should
                                                       #only be created if a expert is signed_up      
