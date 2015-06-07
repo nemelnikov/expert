@@ -25,6 +25,11 @@
   <%= @profile_expert.free_questions %>
 </p>
 
+<p>
+  <strong>Genres:</strong>
+  <%= @profile_expert.genres.pluck(:name) %>
+</p>
+
 
 <%= link_to 'Edit', edit_profile_expert_path(@profile_expert) %> |
 <%#= link_to 'Back', profile_experts_path %>
