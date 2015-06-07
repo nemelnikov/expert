@@ -2,12 +2,12 @@
 
 <h1>Listing Genres</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -16,6 +16,7 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.description %></td>
+        <td><%= link_to 'Show experts', genre  %></td>
         <td><%= link_to 'Show', genre %></td>
         <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
         <td><%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
