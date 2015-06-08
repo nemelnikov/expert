@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :genres
+  get 'genres/experts/:id' => 'genres#find_experts_by_genre', as: 'experts_by_genre'
+
   resources :profile_experts, only: [:show,:edit,:update] #Restriciting automatic creation,since this should
                                                       #only be created if a expert is signed_up      
 
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
   
   get 'index' => 'static_pages#index', as: 'index'
   get 'help' => 'static_pages#help', as: 'help'
-  get 'genres' => 'static_pages#genres', as: 'genres'
+  
   #get 'userInfo' => 'static_pages#userInfo', as: 'userInfo'
   root 'static_pages#index'
 
