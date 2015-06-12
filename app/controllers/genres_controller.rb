@@ -1,6 +1,8 @@
 class GenresController < ApplicationController
   before_action :set_genre, only: [:show, :edit, :update, :destroy, :find_experts_by_genre]
-
+  load_and_authorize_resource #cancancan helper for Restful controllers
+  #skip_load_and_authorize_resource :only => :find_experts_by_genre
+  
   # GET /genres
   # GET /genres.json
   def index
@@ -62,6 +64,7 @@ class GenresController < ApplicationController
   end
 
   def find_experts_by_genre
+
     @experts_by_genre=ProfileExpert.find(@genre.profile_expert_ids)
   end
 
