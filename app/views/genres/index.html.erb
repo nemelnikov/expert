@@ -16,10 +16,16 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.description %></td>
-        <td><%= link_to 'Show experts', experts_by_genre_path(genre)%></td><%#All users can view so now edit%>
+        <%if can? :find_experts_by_genre, Genre %>
+          <td><%= link_to 'Show experts', experts_by_genre_path(genre)%></td>
+        <%end%>  
         <td><%= link_to 'Show', genre %></td>
+        <%if can? :update, Genre%>
         <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
+        <% end %>
+        <%if can? :destroy, Genre %>
         <td><%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +33,6 @@
 
 <br>
 
+<% if can? :create, Genre%>
 <%= link_to 'New Genre', new_genre_path %>
+<% end %>
