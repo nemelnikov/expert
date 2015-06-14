@@ -14,4 +14,12 @@ class User < ActiveRecord::Base
   #	new_record = ProfileUser.new(user_id: self.id)
  # 	new_record.save!
  # end
+
+ def isAdmin?
+ 	if profile_user.nil?#If guest user
+ 		false
+ 	else
+ 		profile_user.admin?#Logged in user is admin?
+ 	end
+ end
 end

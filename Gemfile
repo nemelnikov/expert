@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
+#Use cancancan for authorization
+gem 'cancancan', '~> 1.10'
 #Use devise authentication 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
