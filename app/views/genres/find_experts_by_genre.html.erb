@@ -7,9 +7,6 @@
     <tr>
       <th>First name</th>
       <th>Last name</th>
-      <th>Skype</th>
-      <th>About</th>
-      <th>Free questions</th>
       <th></th>
     </tr>
   </thead>
@@ -19,10 +16,7 @@
       <tr>
         <td><%= experts_by_genre.first_name %></td>
         <td><%= experts_by_genre.last_name %></td>
-        <td><%= experts_by_genre.skype %></td>
-        <td><%= experts_by_genre.about %></td>
-        <td><%= experts_by_genre.free_questions %></td>
-        <td><%= link_to 'Ask question', experts_by_genre %></td>        
+        <td><%= link_to 'Ask question', expert_info_path(experts_by_genre) %></td>        
     <% end %>
   </tbody>
 </table>
