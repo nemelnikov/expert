@@ -19,6 +19,7 @@
 					<li><%= link_to "Home",    index_path  %></li>
 		            <li><%= link_to "Help",    help_path   %></li>
 		            <li><%= link_to "Genres",  genres_path %></li> 
+		            <li><%= link_to "Experts",  all_experts_path %></li> 
 		            <li>
 		            	<%=
 		            		link_to_unless(user_signed_in? || ask_expert_signed_in?,"Login",new_user_session_path) do
