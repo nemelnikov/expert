@@ -1,6 +1,6 @@
 class ProfileExpertsController < ApplicationController
-  before_action :authenticate_ask_expert!
-  before_action :set_profile_expert, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_ask_expert!, except: [:experts, :expert_info]
+  before_action :set_profile_expert, only: [:show, :edit, :update, :destroy, :expert_info]
 
   # GET /profile_experts
   # GET /profile_experts.json
@@ -62,10 +62,19 @@ class ProfileExpertsController < ApplicationController
     end
   end
 
+  def experts #list of all experts. should be separated from this controller in the future
+    @profile_experts = ProfileExpert.all
+  end
+
+  def expert_info #expert's page. should be separated from this controller in the future
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile_expert
       @profile_expert = ProfileExpert.find(params[:id])
+      @expert_genres = @profile_expert.genres.pluck(:name)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

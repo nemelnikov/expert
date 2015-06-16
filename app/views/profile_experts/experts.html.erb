@@ -1,0 +1,19 @@
+<h1>All experts</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profile_experts.each do |profile_experts| %>
+      <tr>
+        <td><%= profile_experts.first_name %></td>
+        <td><%= profile_experts.last_name %></td>
+        <td><%= link_to 'See detailed information', expert_info_path(profile_experts) %></td>        
+    <% end %>
+  </tbody>
+</table>
