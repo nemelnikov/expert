@@ -67,14 +67,14 @@ class ProfileExpertsController < ApplicationController
   end
 
   def expert_info #expert's page. should be separated from this controller in the future
-    
+    @expert_genres = Hash[*@profile_expert.genres.pluck(:id).zip(@profile_expert.genres.pluck(:name)).flatten] 
+    #@profile_expert.genres.pluck(:name)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile_expert
       @profile_expert = ProfileExpert.find(params[:id])
-      @expert_genres = @profile_expert.genres.pluck(:name)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

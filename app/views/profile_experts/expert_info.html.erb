@@ -1,15 +1,7 @@
-<h1>Expert's public page</h1>
+<h1>Expert <%= @profile_expert.first_name %> <%= @profile_expert.last_name %></h1>
 
-<div class="col-md-4">
-		<p>
-		  <strong>First name:</strong>
-		  <%= @profile_expert.first_name %>
-		</p>
-
-		<p>
-		  <strong>Last name:</strong>
-		  <%= @profile_expert.last_name %>
-		</p>
+<div class="col-md-6">
+		<img src="http://1.gravatar.com/avatar/767fc9c115a1b989744c755db47feb60?size=400px" class="img-responsive" alt="Responsive image" width="150px" height="150px">
 
 		<p>
 		  <strong>About:</strong>
@@ -17,20 +9,39 @@
 		</p>
 
 		<p>
-		  <strong>How many free questions can be unanswered?</strong>
+		  <strong>How many free questions can answer?</strong>
 		  <%= @profile_expert.free_questions %>
 		</p>
 
 		<p>
 		  <strong>Expert in:</strong>
-		    <% @expert_genres.each do |genre| %>
-     		<%= link_to genre, index_path %>, <!--need to change path to genre's page-->
+		    <% @expert_genres.each do |id, name| %>
+     		<%= link_to name, experts_by_genre_path(id) %>, <!--need to drop last comma-->
 		  <% end %>
 		</p>
 
 </div>
 
-<div class="col-md-4">
-	<h4>Ask him question</h4>
+<div class="col-md-6">
+	<h4>Question to <%= @profile_expert.first_name %></h4>
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href="#">Free</a></li>
+	  <li role="presentation"><a href="#">Paid</a></li>	  
+	</ul>
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	  <ul class="list-group">
+		  <li class="list-group-item">Free question is visible to everyone.</li>
+		  <li class="list-group-item">Unanswered free questions are limited according to expert's settings</li>
+		  <li class="list-group-item">You can track free question on site. No subscription.</li>
+	  </ul>
+	  <div class="input-group">
+	  <input type="text" class="form-control" placeholder="Title of your question" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Please describe your question more precisely" aria-describedby="basic-addon2">
+	  <button class="btn btn-default" type="button">Ask</button>
+	  </div>
+	  </div>
+	</div>
 </div>
+<h2>Latest public questions</h2>
 		
