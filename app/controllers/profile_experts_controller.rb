@@ -1,6 +1,6 @@
 class ProfileExpertsController < ApplicationController
-  before_action :authenticate_ask_expert!
-  before_action :set_profile_expert, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_ask_expert!, except: [:experts, :expert_info]
+  before_action :set_profile_expert, only: [:show, :edit, :update, :destroy, :expert_info]
 
   # GET /profile_experts
   # GET /profile_experts.json
@@ -60,6 +60,17 @@ class ProfileExpertsController < ApplicationController
       format.html { redirect_to profile_experts_url, notice: 'Profile expert was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def experts #list of all experts. should be separated from this controller in the future
+    @profile_experts = ProfileExpert.all
+  end
+
+  def expert_info #expert's page. should be separated from this controller in the future
+      myHash = Hash.new
+      allid = @profile_expert.genres.pluck(:id)
+      allid.each {|id| myHash[id]=Genre.find_by_id(id).name}
+      @expert_genres = myHash
   end
 
   private
