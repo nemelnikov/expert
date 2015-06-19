@@ -67,8 +67,10 @@ class ProfileExpertsController < ApplicationController
   end
 
   def expert_info #expert's page. should be separated from this controller in the future
-    @expert_genres = Hash[*@profile_expert.genres.pluck(:id).zip(@profile_expert.genres.pluck(:name)).flatten] 
-    #@profile_expert.genres.pluck(:name)
+      myHash = Hash.new
+      allid = @profile_expert.genres.pluck(:id)
+      allid.each {|id| myHash[id]=Genre.find_by_id(id).name}
+      @expert_genres = myHash
   end
 
   private
