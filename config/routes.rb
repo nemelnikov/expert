@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :questions
+
   resources :genres
   get 'genres/experts/:id' => 'genres#find_experts_by_genre', as: 'experts_by_genre'
   

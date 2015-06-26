@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614195013) do
+ActiveRecord::Schema.define(version: 20150626043425) do
 
   create_table "ask_experts", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -71,6 +71,21 @@ ActiveRecord::Schema.define(version: 20150614195013) do
 
   add_index "profile_users", ["user_id"], name: "index_profile_users_on_user_id", using: :btree
 
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",                limit: 255
+    t.text     "question_description", limit: 65535
+    t.integer  "profile_user_id",      limit: 4
+    t.integer  "profile_expert_id",    limit: 4
+    t.string   "question_type",        limit: 255
+    t.integer  "genre_id",             limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "questions", ["genre_id"], name: "index_questions_on_genre_id", using: :btree
+  add_index "questions", ["profile_expert_id"], name: "index_questions_on_profile_expert_id", using: :btree
+  add_index "questions", ["profile_user_id"], name: "index_questions_on_profile_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -91,4 +106,7 @@ ActiveRecord::Schema.define(version: 20150614195013) do
 
   add_foreign_key "profile_experts", "ask_experts"
   add_foreign_key "profile_users", "users"
+  add_foreign_key "questions", "genres"
+  add_foreign_key "questions", "profile_experts"
+  add_foreign_key "questions", "profile_users"
 end

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Question description:</strong>
+  <%= @question.question_description %>
+</p>
+
+<p>
+  <strong>Profile user:</strong>
+  <%= @question.profile_user %>
+</p>
+
+<p>
+  <strong>Profile expert:</strong>
+  <%= @question.profile_expert %>
+</p>
+
+<p>
+  <strong>Question type:</strong>
+  <%= @question.question_type %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @question.genre %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
