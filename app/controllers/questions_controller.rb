@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -25,6 +26,10 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    userid= ProfileUser.find_by_user_id(current_user.id)#Get the profile_user of the current user
+    #logger.info "yep" +@userid.to_s#For checking
+    @question.profile_user_id = userid.id #Set question id to profile user id
+    
 
     respond_to do |format|
       if @question.save
@@ -69,6 +74,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title, :question_description, :profile_user_id, :profile_expert_id, :question_type, :genre_id)
+      params.require(:question).permit(:title, :question_description, :profile_expert_id, :question_type, :genre_id)
     end
 end

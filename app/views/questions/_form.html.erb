@@ -1,3 +1,4 @@
+
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -11,6 +12,7 @@
     </div>
   <% end %>
 
+  
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -20,20 +22,16 @@
     <%= f.text_area :question_description %>
   </div>
   <div class="field">
-    <%= f.label :profile_user_id %><br>
-    <%= f.text_field :profile_user_id %>
+    <%= f.label "Genre" %><br>
+    <%= f.collection_select(:genre_id ,Genre.all,:id,:name)%>
   </div>
   <div class="field">
-    <%= f.label :profile_expert_id %><br>
-    <%= f.text_field :profile_expert_id %>
+    <%= f.label "Expert" %><br>
+    <%= f.collection_select(:profile_expert_id ,ProfileExpert.all,:id,:first_name)%>
   </div>
   <div class="field">
     <%= f.label :question_type %><br>
-    <%= f.text_field :question_type %>
-  </div>
-  <div class="field">
-    <%= f.label :genre_id %><br>
-    <%= f.text_field :genre_id %>
+    <%= f.select :question_type, Question::QUESTION_TYPES, prompt: "Select Question Type" %>
   </div>
   <div class="actions">
     <%= f.submit %>

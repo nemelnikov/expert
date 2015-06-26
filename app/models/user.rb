@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile_user, dependent: :destroy
-
   after_create :build_profile_user
 
 
