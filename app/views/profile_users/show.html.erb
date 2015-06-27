@@ -20,5 +20,7 @@
 
 <%= link_to 'Edit', edit_profile_user_url(@profile_user) %> 
 <%#= link_to 'Back', profile_users_path %>
+<%= link_to 'My questions', userQuestions_profile_user_path%>
+
 <%= button_to 'Sign out', destroy_user_session_path, method: :delete,
   data: { confirm: 'Are you sure?' }%>

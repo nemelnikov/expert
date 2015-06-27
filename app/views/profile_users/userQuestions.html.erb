@@ -1,0 +1,8 @@
+<% if @userQuestion.count == 0 %>
+	<h2>No Questions Asked</h2>
+<%else%>	
+	<% @userQuestion.each do |question| %>
+	<h3><%=question.title%>	</h3>
+	<br>
+	<% end %>
+<% end %>
