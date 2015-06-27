@@ -2,7 +2,7 @@
 	<h2>No Questions Asked</h2>
 <%else%>	
 	<% @userQuestion.each do |question| %>
-	<h3><%=question.title%>	</h3>
+	<h3><%=question.title%>	 <%= link_to("View",question_path(question.id))%></h3>
 	<br>
 	<% end %>
 <% end %>

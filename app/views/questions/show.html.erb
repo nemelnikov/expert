@@ -12,12 +12,12 @@
 
 <p>
   <strong>Profile user:</strong>
-  <%= @question.profile_user %>
+  <%= @question.profile_user.first_name  + " " + @question.profile_user.last_name%>
 </p>
 
 <p>
   <strong>Profile expert:</strong>
-  <%= @question.profile_expert %>
+  <%= @question.profile_expert.first_name + " " + @question.profile_expert.last_name%>
 </p>
 
 <p>
@@ -27,8 +27,8 @@
 
 <p>
   <strong>Genre:</strong>
-  <%= @question.genre %>
+  <%= @question.genre.name %>
 </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%#= link_to 'Edit', edit_question_path(@question) %> 
+<%#= link_to 'Back', questions_path %>
