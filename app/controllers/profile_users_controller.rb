@@ -1,7 +1,8 @@
 class ProfileUsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile_user, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource #To disable users to edit other user profiles
+  skip_authorize_resource only: [:new,:create] # We still want to be able to create new users without any sort of authentication
 
   # GET /profile_users
   # GET /profile_users.json

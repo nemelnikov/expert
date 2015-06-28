@@ -1,5 +1,7 @@
 class Ability 
   include CanCan::Ability
+  #Adding ability to questions controller
+
 
   #Expect this class to heavily change as we progress through the course
   def initialize(user_or_expert)
@@ -14,16 +16,29 @@ class Ability
     end
   end
 
+  #Add permissons for guest users
+
   def user_access(user)
     if user.isAdmin?
         can :manage, :all
     else
-        can :read, :all
+        common_user_access(user)        
     end
+  end
+  #For now , a user cannot view expert profile, because of authenticate method of devise
+
+  def common_user_access(user)
+    profileUserID  = (ProfileUser.find_by_user_id(user.id)).id        
+    can :read, :all
+    can :update, ProfileUser, id: profileUserID #Make sure only the user that created the profile can edit it
+    can :create, Question
+    can :update, Question, profile_user_id: profileUserID  #Only the user that created the question will be able to update it
   end
 
   def expert_access(expert)
+    profileExpertID = (ProfileExpert.find_by_ask_expert_id(expert.id)).id
     can :read, :all
+    can :update, ProfileExpert, id: profileExpertID#Make sure only that the expert that created the profile can edit it
     can [:update,:create], Genre
   end
 
