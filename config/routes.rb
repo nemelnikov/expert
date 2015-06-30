@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   get 'experts/:id' => 'profile_experts#expert_info', as: 'expert_info'
 
 
-  resources :profile_experts, only: [:show,:edit,:update] #Restriciting automatic creation,since this should
-                                                      #only be created if a expert is signed_up      
-
+  resources :profile_experts, only: [:show,:edit,:update] do#Restriciting automatic creation,since this should
+      member do                                                #only be created if a expert is signed_up      
+        get 'expertQuestions'
+      end
+  end
                                                      
   devise_for :ask_experts
   

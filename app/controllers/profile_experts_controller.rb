@@ -23,6 +23,11 @@ class ProfileExpertsController < ApplicationController
   def edit
   end
 
+  #GEt
+  def expertQuestions
+    @expertQuestion = Question.where("profile_expert_id = :expertID",expertID: ProfileExpert.find_by_ask_expert_id(current_ask_expert.id))
+  end
+
   # POST /profile_experts
   # POST /profile_experts.json
   def create

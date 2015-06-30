@@ -1,0 +1,8 @@
+<% if @expertQuestion.count == 0 %>
+	<h2>No Questions Asked To You , Yet</h2>
+<%else%>	
+	<% @expertQuestion.each do |question| %>
+	<h3><%=question.title%>	 <%= link_to("View",question_path(question.id))%></h3>
+	<br>
+	<% end %>
+<% end %>

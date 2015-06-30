@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+	 
+
 	def create
 		@question = Question.find(params[:question_id])
 		@message = @question.messages.create(question_params)

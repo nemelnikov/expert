@@ -16,6 +16,7 @@ class ProfileUsersController < ApplicationController
   def show
   end
 
+  #GET 
   def userQuestions
     #@userQuestion = Question.find_by_profile_user_id(:all,ProfileUser.find_by_user_id(current_user.id))
     @userQuestion = Question.where("profile_user_id = :userID",userID: ProfileUser.find_by_user_id(current_user.id))

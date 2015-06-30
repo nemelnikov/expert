@@ -21,8 +21,10 @@ class Ability
   def user_access(user)
     if user.isAdmin?
         can :manage, :all
+    elsif user.isGuest?
+        #Must add something here. Whatever quest user can access
     else
-        common_user_access(user)        
+      common_user_access(user)        
     end
   end
   #For now , a user cannot view expert profile, because of authenticate method of devise
@@ -34,13 +36,19 @@ class Ability
     can :update, ProfileUser, id: profileUserID #Make sure only the user that created the profile can edit it
     can :create, Question
     can :update, Question, profile_user_id: profileUserID  #Only the user that created the question will be able to update it
+    
+    #can :create, Message, :question => { profile_user_id: profileUserID }
+    #The above rule can make sure if the user can write a message.
   end
 
   def expert_access(expert)
     profileExpertID = (ProfileExpert.find_by_ask_expert_id(expert.id)).id
     can :read, :all
+    can :expertQuestions, ProfileExpert, id: profileExpertID
     can :update, ProfileExpert, id: profileExpertID#Make sure only that the expert that created the profile can edit it
     can [:update,:create], Genre
+    #can :create, Message, :question => { profile_expert_id: profileExpertID }
+    #only the appropriate expert can answer the question.
   end
 
   def common_rules(user_and_expert)#Set of common rules for all users.
