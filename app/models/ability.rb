@@ -30,6 +30,7 @@ class Ability
   def common_user_access(user)
     profileUserID  = (ProfileUser.find_by_user_id(user.id)).id        
     can :read, :all
+    can :userQuestions, ProfileUser, id: profileUserID   
     can :update, ProfileUser, id: profileUserID #Make sure only the user that created the profile can edit it
     can :create, Question
     can :update, Question, profile_user_id: profileUserID  #Only the user that created the question will be able to update it
@@ -45,4 +46,5 @@ class Ability
   def common_rules(user_and_expert)#Set of common rules for all users.
     can :find_experts_by_genre, Genre
   end
+
 end

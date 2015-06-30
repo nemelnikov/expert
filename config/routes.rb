@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :questions
+  resources :questions do
+    resources :messages #Each will be displayed only within the question url
+  end
 
   resources :genres
   get 'genres/experts/:id' => 'genres#find_experts_by_genre', as: 'experts_by_genre'
