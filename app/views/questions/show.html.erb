@@ -31,25 +31,27 @@
 </p>
 
 <h2>Replies<h2>
-<% @question.messages.each do |message| %>
+<% @messages.each do |message| %>
   <p>
-    <strong>Message-</strong>
+      <strong><%=cycle('Expert-','User-')%></strong>        
     <%= message.message_body %>
   </p>
- 
 <% end %>
 
-<%# if can? :create, Message%>
-<h2>Add a Message<h2>
-<%= form_for([@question,@question.messages.build]) do |f| %>
-<p>
-  <%= f.label :message_body %> <br>
-  <%= f.text_area :message_body %>
-</p>
-<p>
-<%= f.submit "Create Message" %>
-</p>
-<%end%>
+<!-- A message can only made if it is user's turn and user is viewing the page or 
+it is expert's turn and expert is viewing it. Logic in controller-->
+<% if @canReply %> 
+  <h2>Add a Message<h2>
+  <%= form_for([@question,@messages.build]) do |f| %>
+  <p>
+    <%= f.label :message_body %> <br>
+    <%= f.text_area :message_body %>
+  </p>
+  <p>
+  <%= f.submit "Create Message" %>
+  </p>
+  <%end%>
+<%end%>  
 
 <%#= link_to 'Edit', edit_question_path(@question) %> 
 <%#= link_to 'Back', questions_path %>

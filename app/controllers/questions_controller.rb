@@ -10,6 +10,29 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @messages=@question.messages#Messages of the assoisated questions
+    
+    if @messages.count.even?#Check if the current reply can be made by the user or the expert
+      expertChance=true;
+    else
+      expertChance=false;
+    end
+
+    if ask_expert_signed_in?#Check who is logged in , user or expert?
+      expertLogin =true
+    else
+      expertLogin =false
+    end
+
+    if expertLogin && expertChance
+      @canReply = true
+    elsif !expertLogin && !expertChance
+      @canReply = true
+    else
+      @canReply = false
+    end
+      
+
   end
 
   # GET /questions/new
@@ -75,4 +98,6 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :question_description, :profile_expert_id, :question_type, :genre_id)
     end
+
+    
 end
