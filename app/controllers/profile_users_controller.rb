@@ -1,7 +1,8 @@
 class ProfileUsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile_user, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource #To disable users to edit other user profiles
+  skip_authorize_resource only: [:new,:create] # We still want to be able to create new users without any sort of authentication
 
   # GET /profile_users
   # GET /profile_users.json
@@ -13,6 +14,12 @@ class ProfileUsersController < ApplicationController
   # GET /profile_users/1
   # GET /profile_users/1.json
   def show
+  end
+
+  #GET 
+  def userQuestions
+    #@userQuestion = Question.find_by_profile_user_id(:all,ProfileUser.find_by_user_id(current_user.id))
+    @userQuestion = Question.where("profile_user_id = :userID",userID: ProfileUser.find_by_user_id(current_user.id))
   end
 
   # Vishal - Disabled using routes

@@ -1,7 +1,8 @@
 class ProfileExpertsController < ApplicationController
   before_action :authenticate_ask_expert!, except: [:experts, :expert_info]
   before_action :set_profile_expert, only: [:show, :edit, :update, :destroy, :expert_info]
-
+  load_and_authorize_resource #To disable users to edit other user profiles
+  skip_authorize_resource only: [:new,:create,:experts,:expert_info] # Expert can still be created by anyone, but we may want to change this later
   # GET /profile_experts
   # GET /profile_experts.json
   def index
@@ -20,6 +21,11 @@ class ProfileExpertsController < ApplicationController
 
   # GET /profile_experts/1/edit
   def edit
+  end
+
+  #GEt
+  def expertQuestions
+    @expertQuestion = Question.where("profile_expert_id = :expertID",expertID: ProfileExpert.find_by_ask_expert_id(current_ask_expert.id))
   end
 
   # POST /profile_experts

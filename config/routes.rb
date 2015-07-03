@@ -1,18 +1,28 @@
 Rails.application.routes.draw do
+  resources :questions do
+    resources :messages, only: [:create]#Each will be displayed only within the question url
+  end
+
   resources :genres
   get 'genres/experts/:id' => 'genres#find_experts_by_genre', as: 'experts_by_genre'
   
   get 'experts' => 'profile_experts#experts', as: 'all_experts'
   get 'experts/:id' => 'profile_experts#expert_info', as: 'expert_info'
 
-  resources :profile_experts, only: [:show,:edit,:update] #Restriciting automatic creation,since this should
-                                                      #only be created if a expert is signed_up      
 
+  resources :profile_experts, only: [:show,:edit,:update] do#Restriciting automatic creation,since this should
+      member do                                                #only be created if a expert is signed_up      
+        get 'expertQuestions'
+      end
+  end
                                                      
   devise_for :ask_experts
   
-  resources :profile_users, only: [:show,:edit,:update]#Similar to above but with user sign_up 
-
+  resources :profile_users, only: [:show,:edit,:update] do#Similar to above but with user sign_up 
+    member do
+      get 'userQuestions'
+    end
+  end
 
   #Added appropriates routing schemea
    devise_for :users, :skip => [:sessions]#Skipping existing session routing

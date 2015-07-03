@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile_user, dependent: :destroy
-
   after_create :build_profile_user
 
 
@@ -22,4 +21,10 @@ class User < ActiveRecord::Base
  		profile_user.admin?#Logged in user is admin?
  	end
  end
+
+ def isGuest? #Check if the current user is Guest, Will be helpful later
+ 	profile_user.nil?#A guest will not have a connected profile to his name
+ 					 #True if guest user, false otherwise
+ end
+
 end

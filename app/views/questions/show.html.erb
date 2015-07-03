@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Question description:</strong>
+  <%= @question.question_description %>
+</p>
+
+<p>
+  <strong>Profile user:</strong>
+  <%= @question.profile_user.first_name  + " " + @question.profile_user.last_name%>
+</p>
+
+<p>
+  <strong>Profile expert:</strong>
+  <%= @question.profile_expert.first_name + " " + @question.profile_expert.last_name%>
+</p>
+
+<p>
+  <strong>Question type:</strong>
+  <%= @question.question_type %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @question.genre.name %>
+</p>
+
+<h2>Replies<h2>
+<% @messages.each do |message| %>
+  <p>
+      <strong><%=cycle('Expert-','User-')%></strong>        
+    <%= message.message_body %>
+  </p>
+<% end %>
+
+<!-- A message can only made if it is user's turn and user is viewing the page or 
+it is expert's turn and expert is viewing it. Logic in controller-->
+<% if @canReply %> 
+  <h2>Add a Message<h2>
+  <%= form_for([@question,@messages.build]) do |f| %>
+  <p>
+    <%= f.label :message_body %> <br>
+    <%= f.text_area :message_body %>
+  </p>
+  <p>
+  <%= f.submit "Create Message" %>
+  </p>
+  <%end%>
+<%end%>  
+
+<%#= link_to 'Edit', edit_question_path(@question) %> 
+<%#= link_to 'Back', questions_path %>
